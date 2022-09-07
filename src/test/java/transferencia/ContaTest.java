@@ -95,7 +95,8 @@ class ContaTest {
     public void validarSaldoEduardoLuz(){
         double saldo = contaEduardoLuz.getSaldo();
         assertEquals(saldo, 3500.00);
+        
     }
-    
+
 
 }
