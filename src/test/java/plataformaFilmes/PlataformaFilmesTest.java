@@ -1,9 +1,8 @@
 package plataformaFilmes;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import maps.LoginMaps;
+import maps.LoginMap;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utils.RestUtils;
@@ -38,18 +37,18 @@ public class PlataformaFilmesTest {
     @BeforeAll
     public static void validarLoginMap(){
         RestUtils.setBaseURI("http://localhost:8080/");
-        LoginMaps.initLogin();
+        LoginMap.initLogin();
 
-        Response response = RestUtils.post(LoginMaps.getLogin() , ContentType.JSON, "auth");
+        Response response = RestUtils.post(LoginMap.getLogin() , ContentType.JSON, "auth");
 
         assertEquals(200, response.statusCode());
-        LoginMaps.token = response.jsonPath().get("token");
+        LoginMap.token = response.jsonPath().get("token");
     }
 
     @Test
     public void validarConsultaCategorias(){
         Map<String, String> header = new HashMap<>();
-        header.put("Authorization", "Bearer " + LoginMaps.token);
+        header.put("Authorization", "Bearer " + LoginMap.token);
 
         Response response = RestUtils.get(header,"categorias");
         assertEquals(200, response.statusCode());
