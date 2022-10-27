@@ -3,7 +3,7 @@ package maps;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginMaps {
+public class LoginMap {
 
     private static Map<String, Object> login;
     public static String token;
